@@ -1,13 +1,22 @@
 <html>
-    <head>
-        <title>Student marks</title>
-    </head>
-    <body>
-        <form action="" method="post" name="login">
-            <p>{{ form.name }} Name </p>
-            <p>{{ form.discipline }} Discipline </p>
-            <p>{{ form.mark }} Mark</p>
-            <p><input type="submit" value="Submit"></p>
-        </form>
-    </body>
+<head>
+<title>Student marks</title>
+<link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+</head>
+<body>
+Current grades: {{ grades }}
+Average grade: {{ avg_grades }} 
+Average for discipline: {{ avg_for_discipline }}
+Average for student: {{ student_avg }}
+<div class="container">
+	<div class="col-md-4 col-md-offset-4">
+		<form class="form-inline" action="" method="post" name="add_student" role="form">
+			{{ form.name }}
+			{{ form.discipline }}
+			{{ form.grade }}
+			<button type="submit" >Добавить</button>
+		</form>
+	</div>
+</div>
+</body>
 </html>
