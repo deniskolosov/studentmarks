@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title>Student marks</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="well">
+                        <form class="form" action="" method="post" name="add_student" role="form">
+                            <div class="form-group">
+                                <label for="name">Имя студента:</label>
+                                {{ form.name(class_="form-control") }}
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Предмет:</label>
+                                {{ form.discipline(class_="form-control") }}
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Оценка:</label>
+                                {{ form.grade(class_="form-control") }}
+                            </div>
+                            <button type="submit" class="btn btn-default" >Добавить</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <p>Средняя успеваемость по предмету:</p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Предмет</th>
+                                    <th>Оценка</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for subj in avg_for_discipline %}
+                                <tr>
+                                    <td>{{ subj[1] }}</td>
+                                    <td>{{ subj[0] }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <p>Оценки</p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Студент</th>
+                                    <th>Предмет</th>
+                                    <th>Оценка</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for grade in grades %}
+                                <tr>
+                                    <td>{{ grade.student_related.name }}</td>
+                                    <td>{{ grade.discipline_related.name }}</td>
+                                    <td>{{ grade.grade }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="well">
+                        <p>Средняя успеваемость по студентам:</p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Имя</th>
+                                    <th>Успеваемость</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for el in student_avg %}
+                                <tr>
+                                    <td>{{ el[1] }}</td>
+                                    <td>{{ el[0] }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><p>Средний балл студентов:</p></td>
+                                    <td>{{ avg_grades[0][0] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
