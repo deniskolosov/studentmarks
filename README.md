@@ -13,6 +13,8 @@
 `$ git clone https://github.com/thefivekey/studentmarks.git`
 
 `$ pip install -r requirements.txt`
+
 `$ cd studentmarks`
+
 `$ python run.py`
 
