@@ -18,5 +18,4 @@
 
 `$ python run.py`
 
-Онлайн демо — http://denisk.pythonanywhere.com/
 
